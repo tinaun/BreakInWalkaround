@@ -11,13 +11,6 @@ is entered for the first time. -->
 </dependencies>
 
 <assets>
-	<!-- This is the first half of a big optimization. Some people have a lot of
-	trouble rendering big images, even if only a small part is being requested. While
-	in development we often use the "full" image, but once we go into production we
-	slice up all the big background and foreground images into a grid so that it's
-	easier for end users' computer to pick out the parts we want.
-	All the images except for the bottom-most and right-most ones are 500x500. I
-	find that's a good compromise for performance/complexity. 
 	
 	<!-- The map is a special black-and-white image describing walkable areas in
 	a room. White pixels are walkable, black are unwalkable. This actually consumes
@@ -26,8 +19,8 @@ is entered for the first time. -->
 	large rooms this is still too much, and 25% scale in necessary. This leads to
 	a substantial sarcifice in hit-detection quality, so avoid big rooms!-->
   <asset name='secondRoomMap' type='graphic'>backgrounds/secondRoomMap.png</asset>
-  <asset name='secondRoomBG'  type='graphic'>background/secondRoomBG.png</asset>
-  <asset name='secondRoomFG'  type='graphic'>background/secondRoomFG.png</asset>
+  <asset name='secondRoomBG'  type='graphic'>backgrounds/secondRoomBG.png</asset>
+  <asset name='secondRoomFG'  type='graphic'>backgrounds/secondRoomFG.png</asset>
   
   <!-- an item to be found in a chest, nothing special about it-->
   <asset name='item1' type='graphic'>objects/items/item1.png</asset>
@@ -103,7 +96,7 @@ safe than sorry.-->
    <!-- Note no depthing specification puts a sprite in the background. Not 
    specifying coordinates also puts them at (0,0) by default (top-left corner). -->
     <sprite name='secondRoomBG'>
-    	<animation sheet='secondRoomBG' sliced='false'>
+    	<animation sheet='secondRoomBG' sliced='false'/>
     </sprite>
 
 		<!-- note depthing='2' is what puts this in the foreground -->
