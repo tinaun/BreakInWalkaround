@@ -68,7 +68,7 @@ safe than sorry.-->
 				@sec_talk You can go in now
 				@bux_talk Thank you
   			</args>
-			<action command='changeRoomRemote'>rooms/testRoom.xml,testRoom,760,280</action>
+			<action command='changeRoomRemote'>rooms/secondRoom.xml,secondRoom,760,300</action>
   		</action>
   	</character>
   	
