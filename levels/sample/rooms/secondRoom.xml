@@ -7,12 +7,12 @@ is entered for the first time. -->
 <dependencies>
 	<dependency>chars/bux.xml</dependency> <!--load in bux first.-->
 	<dependency>chars/meenah.xml</dependency> <!-- loading in everything meenah entails -->
-	<dependency>chars/karkat.xml</dependency> <!-- and karkat -->
+	<dependency>chars/hiWiz.xml</dependency> <!-- and the HIGH WIZURD -->
 </dependencies>
 
 <assets>
 	
-	<!-- The map is a special black-and-white image describing walkable areas in
+    <!-- The map is a special black-and-white image describing walkable areas in
 	a room. White pixels are walkable, black are unwalkable. This actually consumes
 	a very large amount of memory to use, so we keep the scaled down. I find 50%
 	scale is a good compromise for performance/accuracy. However in sufficiently
@@ -24,6 +24,8 @@ is entered for the first time. -->
   
   <!-- an item to be found in a chest, nothing special about it-->
   <asset name='item1' type='graphic'>objects/items/item1.png</asset>
+  <asset name='item2' type='graphic'>objects/items/item2.png</asset>
+  <asset name='item3' type='graphic'>objects/items/item3.png</asset>
 </assets>
 
 <!-- We create the sprite for this item outside of everything else
@@ -35,6 +37,15 @@ Note: depthing='2' puts this in front of everything, including foreground elemen
 <sprite name='item1' depthing='3'>
 	<animation sheet='item1' x='-30' y='-30'/>
 </sprite>
+
+<sprite name='item2' depthing='3'>
+	<animation sheet='item2' x='-30' y='-30'/>
+</sprite>
+
+<sprite name='item3' depthing='3'>
+	<animation sheet='item3' x='-30' y='-30'/>
+</sprite>
+
 
 <!-- We wrap all room tags in the rooms tag. This is mostly useless since it's
 not good practice to keep multiple rooms in one file, but hey, better
@@ -57,34 +68,65 @@ safe than sorry.-->
   	are a great way to seperate logic and content, as well as recycle common
   	patterns. -->
   
-  	<character class='karkat' x='420' y='500'>
-  		<action class='beKarkat'/>
+  	<character class='hiWiz' x='420' y='500'>
   		<action command='talk' name='Talk.'>
   			<args>
-  				@bux_talk This is a test. And a sample 
-  				@karkat_talk what
-  				@bux_confusedtalk Who are you?
-				@meenah_talk get the fuck out of my sample
-				@bux_zoneout
+  				@bux_talk Hello!
+  				@hi_talk Why hello! Who are you?
+  				@bux_talk I'm a graduate from the WIZARD ACADEMY! I'm here for the WIZARD PARTY.
+				@hi_talk Oh! Well, it's just past this room up ahead.
+				@bux_talk Thank you, mr...
+				@hi_idle
+				@hi_talk Just call me High Wizard.
+				@bux_confusedtalk Uh, OK, High Wizard
   			</args>
   		</action>
   	</character>
  
   	<!-- here we're adding a standard chest based on a template class found in
   	etc/standardTemplates.xml -->
-  	<sprite class='chest1' name='chest1' x='166' y='498'>
+  	<sprite class='chest1' name='chest1' x='410' y='550'>
 			<action command='openChest' sprite='bux' name='Open.'>
 				<args>
-					chest1,item1, @! You got a CAN OF TAB!
-					@! You have no idea what this is
-				</args>
-			</action>
-			<action command='openChest' sprite='karkat' name='Open.'>
-				<args>
-					chest1,item1, @! You got a CAN OF TAB!
+					chest1,item1, @! You got a WIZARD WAND
+					@! A special WIZARD WAND that looks to be from the HIGH WIZARD himself! He looks over at you APPROVINGLY.
+					@! ....
+					@! Yeah, it's just a normal stupid wand.
 				</args>
 			</action>
 		</sprite>
+		
+	  <sprite class='chest1' name='chest2' x='200' y='1550'>
+		<action command='openChest' sprite='bux' name='Open.'>
+			<args>
+				chest2,item2, @! You got a WIZARD HAT
+				@! You, unfortunately, are not a fan of WIZARD HATS because of how WEIRD they look. Plus, they're a triangle.
+				@! And triangles aren't boxes
+			</args>
+		</action>
+	</sprite>
+	
+	 <sprite class='chest1' name='chest3' x='1413' y='1450'>
+		<action command='openChest' sprite='bux' name='Open.'>
+			<args>
+				chest3,item3, @! You got a WIZARD SPELL
+				@! Hahaha, no. It's actually just a STONE SLAB with some STRANGE LETTERS from the BOX LANGUAGE on it. From your LIMITED KNOWLEDGE OF BOX KNOWLEDGE, it contains the words "List" "Ross" and you can JUST make out a phrase, which is "That Train has Sailed"
+				@! That... doesn't make any sense.
+			</args>
+		</action>
+	</sprite>
+   
+   	 <sprite class='chest1' name='chest4' x='1200' y='898'>
+		<action command='openChest' sprite='bux' name='Open.'>
+			<args>
+				chest4,item3, @! You got a SLAB OF STONE
+				@! A DARK FIRE BURNS WITHIN YOU
+				@! Uh...
+				@! You're just going to put that back.
+			</args>
+		</action>
+	</sprite>
+   
    
    <!-- here we're adding in our BG and FG. This is the second half of our 
    optimization. To avoid creating a dozen sprites for every single tile, we
