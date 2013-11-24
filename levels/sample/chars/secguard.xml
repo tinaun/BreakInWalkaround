@@ -23,8 +23,8 @@ description -->
 	
 	<asset name='karkatSong' type='audio'>audio/music/demoscene.oga;audio/music/demoscene.mp3</asset> <!-- loops to 0 -->
 	
-	<asset name='sec_angry' type='graphic'>dialogs/secGuard/secGuard_bored.png</asset>
-	<asset name='sec_talk' type='graphic'>dialogs/secGuard/secGuard_talk.png</asset>
+	<asset name='sec_angry' type='graphic'>dialogs/secGuard/secGuard_Bored.png</asset>
+	<asset name='sec_talk' type='graphic'>dialogs/secGuard/secGuard_Talk.png</asset>
 </assets>
 
 <hud>
