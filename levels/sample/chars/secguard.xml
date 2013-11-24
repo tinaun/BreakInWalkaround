@@ -1,0 +1,36 @@
+<!-- this file describes karkat. See chars/meenah.xml for a better
+description -->
+<sburb description='SecGuard'>
+
+<classes>
+	<animation class='sec-dialog' frameInterval='6' x='-180' y='-454'/>
+	
+	<character class='sec' name='sec' sx='-50' sy='-115' sWidth='100' sHeight='130' width='35' height='25' sheet='secSheet' state='walkFront' facing='Front'>
+		
+	</character>
+	
+	<action class='beSec' name='Be Security Guard.' command='changeChar'>
+		<args>sec</args>
+		<action command='playSong'>
+			<args>karkatSong</args>
+		</action>
+	</action>
+</classes>
+
+<assets>
+
+	<asset name='secSheet' type='graphic'>chars/secGuard/sec.png</asset>
+	
+	<asset name='karkatSong' type='audio'>audio/music/demoscene.oga;audio/music/demoscene.mp3</asset> <!-- loops to 0 -->
+	
+	<asset name='sec_angry' type='graphic'>dialogs/secGuard/secGuard_bored.png</asset>
+	<asset name='sec_talk' type='graphic'>dialogs/secGuard/secGuard_talk.png</asset>
+</assets>
+
+<hud>
+	<dialogsprites>	
+			<animation name='sec_angry' class='sec-dialog' sheet='sec_angry' />
+			<animation name='sec_talk' class='sec-dialog' sheet='sec_talk'  length='2'/>
+  </dialogsprites>
+</hud>
+</sburb>
