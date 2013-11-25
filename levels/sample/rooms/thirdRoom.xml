@@ -2,27 +2,23 @@
 own self-contained file. This isn't fundamentally necessary, but it's very
 natural. It also allows you to very easily load content only once a room 
 is entered for the first time. -->
-<sburb description="first room">
+<sburb description="third room">
 
 <dependencies>
 	<dependency>chars/bux.xml</dependency> <!--load in bux first.-->
-	<dependency>chars/meenah.xml</dependency> <!-- loading in everything meenah entails -->
-	<dependency>chars/hiWiz.xml</dependency> <!-- and the HIGH WIZURD -->
+	<dependency>chars/hiWiz.xml
 </dependencies>
 
 <assets>
-	
-    <!-- The map is a special black-and-white image describing walkable areas in
+	<!-- The map is a special black-and-white image describing walkable areas in
 	a room. White pixels are walkable, black are unwalkable. This actually consumes
 	a very large amount of memory to use, so we keep the scaled down. I find 50%
 	scale is a good compromise for performance/accuracy. However in sufficiently
 	large rooms this is still too much, and 25% scale in necessary. This leads to
 	a substantial sarcifice in hit-detection quality, so avoid big rooms!-->
-  <asset name='secondRoomMap' type='graphic'>backgrounds/secondRoomMap.png</asset>
-  <asset name='secondRoomBG'  type='graphic'>backgrounds/secondRoomBG.png</asset>
-  <asset name='secondRoomFG'  type='graphic'>backgrounds/secondRoomFG.png</asset>
+  <asset name='testRoomMap' type='graphic'>backgrounds/thirdRoomMap.png</asset>
+  <asset name='testRoomBG'  type='graphic'>backgrounds/thirdRoomBG.png</asset>
   
-  <!-- an item to be found in a chest, nothing special about it-->
   <asset name='item1' type='graphic'>objects/items/item1.png</asset>
   <asset name='item2' type='graphic'>objects/items/item2.png</asset>
   <asset name='item3' type='graphic'>objects/items/item3.png</asset>
@@ -61,6 +57,7 @@ Note: depthing='2' puts this in front of everything, including foreground elemen
 	<animation sheet='item6' x='-30' y='-30'/>
 </sprite>
 
+
 <!-- We wrap all room tags in the rooms tag. This is mostly useless since it's
 not good practice to keep multiple rooms in one file, but hey, better
 safe than sorry.-->
@@ -72,7 +69,7 @@ safe than sorry.-->
 	camera can see. However width and height can be explicitly
 	specified here if need be. The walkableMap is theoretically optional, but
 	it's incredibly useful and easy to use. -->
-  <room name='secondRoom' walkableMap='secondRoomMap' scale='4'>
+  <room name='thirdRoom' walkableMap='thirdRoomMap' scale='4'>
   
   	<!-- here we drop in our character. Since we specified everything in 
   	chars/meenah.xml, we don't have to do much here. We just need to specify
@@ -81,112 +78,35 @@ safe than sorry.-->
   	internal tags that may have been part of the class. Template classes
   	are a great way to seperate logic and content, as well as recycle common
   	patterns. -->
-  
-  	<character class='hiWiz' x='420' y='500'>
+ 
+  	<character class='hiWiz' x='760' y='76'>
   		<action command='talk' name='Talk.'>
   			<args>
-  				@bux_talk Hello!
-  				@hi_talk Why hello! Who are you?
-  				@bux_talk I'm a graduate from the WIZARD ACADEMY! I'm here for the WIZARD PARTY.
-				@hi_talk Oh! Well, it's just past this room up ahead.
-				@bux_talk Thank you, mr...
+  				@bux_talk Hey
 				@hi_idle
-				@hi_talk Just call me High Wizard.
-				@bux_confusedtalk Uh, OK, High Wizard
+				@bux_confusedtalk Uh, are you going to talk to me?
+				@hi_idle
+				@bux_zonedout
+				@hi_idle
+				@bux_zonedout
+				@! The two of you then had one of the most intense stare-offs in the Universe.
   			</args>
   		</action>
   	</character>
-	
-  	<character class='hiWiz' name='hiWiz2' x='1000' y='898'>
-  		<action command='talk' name='Talk.'>
-  			<args>
-  				@bux_talk Hello!
-				@hi_talk Hello, my dear Child.
-				@bux_confusedtalk Child...?
-				@hi_talk Why, yes! You're a Child in these walls.
-				@bux_confusedtalk Uh...
-				@hi_talk You see, when the WIZARD GUILDS were founded, they decided to use a hierachy system, just like the Church of Old. This gave us relevance, and we would be recognised within the Guilds of Gods.
-				@hi_talk They also had buffet advantages!
-				@bux_zoneout
-				@! You zone out and forget everything the High Wizard said.
-  			</args>
-  		</action>
-  	</character>
- 
- 
+  	
   	<!-- here we're adding a standard chest based on a template class found in
   	etc/standardTemplates.xml -->
-  	<sprite class='chest1' name='chest1' x='410' y='550'>
+  	<sprite class='chest1' name='chest1' x='400' y='498'>
 			<action command='openChest' sprite='bux' name='Open.'>
 				<args>
 					chest1,item1, @! You got a WIZARD WAND
-					@! A special WIZARD WAND that looks to be from the HIGH WIZARD himself! He looks over at you APPROVINGLY.
-					@! ....
-					@! Yeah, it's just a normal stupid wand.
+					@! You hold it in your hands, and feel the cold, hard shaft of it in your hands.
+					@! Slowly, you start to bend it. You can feel the wood snap beneath your hands. A powerful aura starts to emit from the wand, but your BOX POWERS keep it back.
+					@! You got a BROKEN WAND
 				</args>
 			</action>
 		</sprite>
-		
-	  <sprite class='chest1' name='chest2' x='200' y='1700'>
-		<action command='openChest' sprite='bux' name='Open.'>
-			<args>
-				chest2,item2, @! You got a WIZARD HAT
-				@! You, unfortunately, are not a fan of WIZARD HATS because of how WEIRD they look. Plus, they're a triangle.
-				@! And triangles aren't boxes
-			</args>
-		</action>
-	</sprite>
-	
-	 <sprite class='chest1' name='chest3' x='1413' y='1450'>
-		<action command='openChest' sprite='bux' name='Open.'>
-			<args>
-				chest3,item3, @! You got a WIZARD SPELL
-				@! Hahaha, no. It's actually just a STONE SLAB with some STRANGE LETTERS from the BOX LANGUAGE on it. From your LIMITED KNOWLEDGE OF BOX KNOWLEDGE, it contains the words "List" "Ross" and you can JUST make out a phrase, which is "That Train has Sailed"
-				@! That... doesn't make any sense.
-			</args>
-		</action>
-	</sprite>
    
-   	 <sprite class='chest1' name='chest4' x='1200' y='898'>
-		<action command='openChest' sprite='bux' name='Open.'>
-			<args>
-				chest4,item3, @! You got a SLAB OF STONE
-				@! A DARK FIRE BURNS WITHIN YOU
-				@! Uh...
-				@! You're just going to put that back.
-			</args>
-		</action>
-	</sprite>
-	
-   	 <sprite class='chest1' name='chest5' x='100' y='1550'>
-		<action command='openChest' sprite='bux' name='Open.'>
-			<args>
-				chest5,item4, @! You got a WIZARD CAPE
-				@! It's simply a BEGINNERS CAPE, which you got rid of years ago.
-			</args>
-		</action>
-	</sprite>
-
-   	 <sprite class='chest1' name='chest6' x='900' y='898'>
-		<action command='openChest' sprite='bux' name='Open.'>
-			<args>
-				chest6,item5, @! You got a BOX
-				@! Score! You got a god damn BOX.
-				@! Best thing you have ever gotten from these chests.
-			</args>
-		</action>
-	</sprite>
-   
-   	 <sprite class='chest1' name='chest7' x='1213' y='1450'>
-		<action command='openChest' sprite='bux' name='Open.'>
-			<args>
-				chest7,item6, @! You got a SCROLL
-				@! This is actually a few hundred years old.
-				@! You wonder why it's in a CHEST, and why you're opening all of them.
-			</args>
-		</action>
-	</sprite>
-	
    <!-- here we're adding in our BG and FG. This is the second half of our 
    optimization. To avoid creating a dozen sprites for every single tile, we
    specify that this image has been sliced up into tiles. Then we just specify
@@ -196,14 +116,20 @@ safe than sorry.-->
    
    <!-- Note no depthing specification puts a sprite in the background. Not 
    specifying coordinates also puts them at (0,0) by default (top-left corner). -->
-    <sprite name='secondRoomBG'>
-    	<animation sheet='secondRoomBG' sliced='false'/>
+    <sprite name='thirdRoomBG'>
+    	<animation sheet='thirdRoomBG' sliced='false'/>
     </sprite>
-
-		<!-- note depthing='2' is what puts this in the foreground -->
-		<sprite name='secondRoomFG' depthing='2'>
-    	<animation sheet='secondRoomFG' sliced='false'/>
-    </sprite>
+	
+	<!-- Triggers -->
+	 <triggers>
+            <trigger>spriteProperty,char,x&lt;780
+                <trigger>spriteProperty,char,y&lt;1500
+                    <action command='deltaSprite'>
+                         <args>char,12,0</args>
+                         <action command='changeRoomRemote'>firstRoom.xml,firstRoom,4630,3057</action>
+                     </action>
+                 </trigger>
+            </trigger>
   </room>
 </rooms>
 </sburb>

@@ -33,7 +33,7 @@ and even their music. Often this is used to also link in their actual conversati
 	<asset name='buxSheet' type='graphic'>chars/bux/bux.png</asset>
 
 	<!-- her background music -->
-	<asset name='buxSong' type='audio'>audio/music/buxTheme.oga;audio/music/buxTheme.mp3</asset> <!-- loops to 0 -->
+	<asset name='buxSong' type='audio'>audio/music/buxTheme.oga;audio/music/buxTheme2.mp3</asset> <!-- loops to 0 -->
 	
 	<!-- her dialog sprites -->
 	<asset name='bux_talk' type='graphic'>dialogs/bux/bux_talk.png</asset>
