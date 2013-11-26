@@ -204,6 +204,14 @@ safe than sorry.-->
 		<sprite name='secondRoomFG' depthing='2'>
     	<animation sheet='secondRoomFG' sliced='false'/>
     </sprite>
+	
+	<!-- Triggers -->
+            <trigger>spriteProperty,char,x&lt;420
+                <trigger>spriteProperty,char,y&lt;5
+                         <action command='changeRoomRemote'>firstRoom.xml,thirdRoom,5,5</action>
+                     </action>
+                 </trigger>
+            </trigger>
   </room>
 </rooms>
 </sburb>

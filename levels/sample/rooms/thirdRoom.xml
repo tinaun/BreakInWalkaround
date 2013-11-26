@@ -121,7 +121,6 @@ safe than sorry.-->
     </sprite>
 	
 	<!-- Triggers -->
-	 <triggers>
             <trigger>spriteProperty,char,x&lt;780
                 <trigger>spriteProperty,char,y&lt;1500
                     <action command='deltaSprite'>
