@@ -23,8 +23,8 @@ description -->
 	
 	<asset name='karkatSong' type='audio'>audio/music/demoscene.oga;audio/music/demoscene.mp3</asset> <!-- loops to 0 -->
 	
-	<asset name='tr_idle' type='graphic'>dialogs/trWiz/trWiz_Idle.png</asset>
-	<asset name='tr_talk' type='graphic'>dialogs/trWiz/tr_Talk.png</asset>
+	<asset name='tr_idle' type='graphic'>dialogs/trWiz/trWiz_idle.png</asset>
+	<asset name='tr_talk' type='graphic'>dialogs/trWiz/tr_talk.png</asset>
 </assets>
 
 <hud>

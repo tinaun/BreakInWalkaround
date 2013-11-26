@@ -281,7 +281,7 @@ safe than sorry.-->
 	<!-- Triggers -->
 	<triggers>
         <trigger>spriteProperty,char,x&gt;1237
-            <trigger>spriteProperty,char,y&lt;347
+            <trigger detonate="true">spriteProperty,char,y&lt;347
 				<action command='talk'>
 					 <args>
 					 @! This leads to the end of the game. Are you sure you're done here?
