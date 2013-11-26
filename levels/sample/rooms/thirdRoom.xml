@@ -16,8 +16,8 @@ is entered for the first time. -->
 	scale is a good compromise for performance/accuracy. However in sufficiently
 	large rooms this is still too much, and 25% scale in necessary. This leads to
 	a substantial sarcifice in hit-detection quality, so avoid big rooms!-->
-  <asset name='testRoomMap' type='graphic'>backgrounds/thirdRoomMap.png</asset>
-  <asset name='testRoomBG'  type='graphic'>backgrounds/thirdRoomBG.png</asset>
+  <asset name='thirdRoomMap' type='graphic'>backgrounds/thirdRoomMap.png</asset>
+  <asset name='thirdRoomBG'  type='graphic'>backgrounds/thirdRoomBG.png</asset>
   
   <asset name='item1' type='graphic'>objects/items/item1.png</asset>
   <asset name='item2' type='graphic'>objects/items/item2.png</asset>
@@ -119,16 +119,6 @@ safe than sorry.-->
     <sprite name='thirdRoomBG'>
     	<animation sheet='thirdRoomBG' sliced='false'/>
     </sprite>
-	
-	<!-- Triggers -->
-            <trigger>spriteProperty,char,x&lt;780
-                <trigger>spriteProperty,char,y&lt;1500
-                    <action command='deltaSprite'>
-                         <args>char,12,0</args>
-                         <action command='changeRoomRemote'>firstRoom.xml,firstRoom,4630,3057</action>
-                     </action>
-                 </trigger>
-            </trigger>
   </room>
 </rooms>
 </sburb>

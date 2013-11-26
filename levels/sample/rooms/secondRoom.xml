@@ -206,12 +206,13 @@ safe than sorry.-->
     </sprite>
 	
 	<!-- Triggers -->
-            <trigger>spriteProperty,char,x&lt;420
-                <trigger>spriteProperty,char,y&lt;5
-                         <action command='changeRoomRemote'>firstRoom.xml,thirdRoom,5,5</action>
-                     </action>
-                 </trigger>
+	<triggers>
+        <trigger>spriteProperty,char,x&lt;500
+            <trigger>spriteProperty,char,y&lt;15
+					<action command='changeRoomRemote'>thirdRoom.xml,thirdRoom,100,928</action>
             </trigger>
+        </trigger>
+	</triggers>
   </room>
 </rooms>
 </sburb>
