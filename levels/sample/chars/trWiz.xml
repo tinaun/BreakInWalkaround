@@ -1,0 +1,36 @@
+<!-- this file describes Training Wizard. See chars/meenah.xml for a better
+description -->
+<sburb description='trWiz'>
+
+<classes>
+	<animation class='tr-dialog' frameInterval='6' x='-180' y='-454'/>
+	
+	<character class='trWiz' name='trWiz' sx='-50' sy='-115' sWidth='100' sHeight='130' width='35' height='25' sheet='trSheet' state='walkFront' facing='Front'>
+		
+	</character>
+	
+	<action class='beTr' name='Be Training Wizard.' command='changeChar'>
+		<args>trWiz</args>
+		<action command='playSong'>
+			<args>karkatSong</args>
+		</action>
+	</action>
+</classes>
+
+<assets>
+
+	<asset name='trSheet' type='graphic'>chars/trWiz/trWiz.png</asset>
+	
+	<asset name='karkatSong' type='audio'>audio/music/demoscene.oga;audio/music/demoscene.mp3</asset> <!-- loops to 0 -->
+	
+	<asset name='tr_idle' type='graphic'>dialogs/trWiz/trWiz_Idle.png</asset>
+	<asset name='tr_talk' type='graphic'>dialogs/trWiz/tr_Talk.png</asset>
+</assets>
+
+<hud>
+	<dialogsprites>	
+			<animation name='tr_idle' class='tr-dialog' sheet='tr_idle' />
+			<animation name='tr_talk' class='tr-dialog' sheet='tr_talk'  length='2'/>
+  </dialogsprites>
+</hud>
+</sburb>

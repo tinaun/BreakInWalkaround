@@ -2,7 +2,7 @@
 own self-contained file. This isn't fundamentally necessary, but it's very
 natural. It also allows you to very easily load content only once a room 
 is entered for the first time. -->
-<sburb description="first room">
+<sburb description="second room">
 
 <dependencies>
 	<dependency>chars/bux.xml</dependency> <!--load in bux first.-->
@@ -209,7 +209,7 @@ safe than sorry.-->
 	<triggers>
         <trigger>spriteProperty,char,x&lt;500
             <trigger>spriteProperty,char,y&lt;15
-					<action command='changeRoomRemote'>thirdRoom.xml,thirdRoom,100,928</action>
+					<action command='changeRoomRemote'>rooms/thirdRoom.xml,thirdRoom,648,2660</action>
             </trigger>
         </trigger>
 	</triggers>
