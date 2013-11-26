@@ -1,0 +1,307 @@
+<!-- This file describes the first room. Normally I break each room into its
+own self-contained file. This isn't fundamentally necessary, but it's very
+natural. It also allows you to very easily load content only once a room 
+is entered for the first time. -->
+<sburb description="third room">
+
+<dependencies>
+	<dependency>chars/bux.xml</dependency> <!--load in bux first.-->
+	<dependency>chars/hiWiz.xml</dependency>
+	<dependency>chars/trWiz.xml</dependency>
+	<dependency>chars/door.xml</dependency>
+</dependencies>
+
+<assets>
+	<!-- The map is a special black-and-white image describing walkable areas in
+	a room. White pixels are walkable, black are unwalkable. This actually consumes
+	a very large amount of memory to use, so we keep the scaled down. I find 50%
+	scale is a good compromise for performance/accuracy. However in sufficiently
+	large rooms this is still too much, and 25% scale in necessary. This leads to
+	a substantial sarcifice in hit-detection quality, so avoid big rooms!-->
+  <asset name='thirdRoomMap' type='graphic'>backgrounds/thirdRoomMap.png</asset>
+  <asset name='thirdRoomBG'  type='graphic'>backgrounds/thirdRoomBG.png</asset>
+  
+  <asset name='item1' type='graphic'>objects/items/item1.png</asset>
+  <asset name='item2' type='graphic'>objects/items/item2.png</asset>
+  <asset name='item3' type='graphic'>objects/items/item3.png</asset>
+  <asset name='item4' type='graphic'>objects/items/item4.png</asset>
+  <asset name='item5' type='graphic'>objects/items/item5.png</asset>
+  <asset name='item6' type='graphic'>objects/items/item6.png</asset>
+</assets>
+
+<!-- We create the sprite for this item outside of everything else
+because by default it isn't anywhere at all. We just want to be able to
+access it at some point in the future. This is a very common pattern. We
+do this for anything that will "eventually" be added to a room.
+
+Note: depthing='2' puts this in front of everything, including foreground elements! -->
+<sprite name='item1' depthing='3'>
+	<animation sheet='item1' x='-30' y='-30'/>
+</sprite>
+
+<sprite name='item2' depthing='3'>
+	<animation sheet='item2' x='-30' y='-30'/>
+</sprite>
+
+<sprite name='item3' depthing='3'>
+	<animation sheet='item3' x='-30' y='-30'/>
+</sprite>
+
+<sprite name='item4' depthing='3'>
+	<animation sheet='item4' x='-30' y='-30'/>
+</sprite>
+
+<sprite name='item5' depthing='3'>
+	<animation sheet='item5' x='-30' y='-30'/>
+</sprite>
+
+<sprite name='item6' depthing='3'>
+	<animation sheet='item6' x='-30' y='-30'/>
+</sprite>
+
+
+<!-- We wrap all room tags in the rooms tag. This is mostly useless since it's
+not good practice to keep multiple rooms in one file, but hey, better
+safe than sorry.-->
+<rooms>
+	<!-- Here we describe our room, note that here we are using the "map" we 
+	loaded in earlier. Also note the scale variable specifying how much this map
+	should be scaled up for it to reflect the actual room size. We also derive
+	the dimensions of the room from this, which is used to specify the area the
+	camera can see. However width and height can be explicitly
+	specified here if need be. The walkableMap is theoretically optional, but
+	it's incredibly useful and easy to use. -->
+  <room name='thirdRoom' walkableMap='thirdRoomMap' scale='4'>
+  
+  	<!-- here we drop in our character. Since we specified everything in 
+  	chars/meenah.xml, we don't have to do much here. We just need to specify
+  	her location. Note that class='meenah' will fill in all the values we
+  	didn't specify using the class in chars/meenah.xml, including any
+  	internal tags that may have been part of the class. Template classes
+  	are a great way to seperate logic and content, as well as recycle common
+  	patterns. -->
+ 
+  	<character class='hiWiz' x='526' y='2202'>
+  		<action command='talk' name='Talk.'>
+  			<args>
+  				@bux_talk Hey
+				@hi_idle
+				@bux_confusedtalk Are you going to talk to me?
+				@hi_idle
+				@bux_zoneout
+				@hi_idle
+				@bux_zoneout
+				@! The two of you then had one of the most intense stare-offs in the Universe.
+  			</args>
+  		</action>
+  	</character>
+	
+	<character class='hiWiz' name = 'hiWiz2' x='1639' y='756'>
+  		<action command='talk' name='Talk.'>
+  			<args>
+  				@bux_talk Hello?
+				@hi_talk Ugh, not another one of you today
+				@bux_confusedtalk Wait, what?
+				@hi_talk I'm the College High Wizard, and I've had graduates ask me every minute 'where is the party?'
+				@hi_talk How do I fly?
+				@hi_talk Didn't the teachers teach them anything? Even a kid knows that you can't fly until you learn the SPELL.
+				@hi_talk Sorry, I'm just really stressed. Would you be a dapper and leave me alone for a bit?
+				@bux_talk Uh, Sure.
+  			</args>
+  		</action>
+  	</character>
+
+	<character class='hiWiz' name = 'hiWiz3' x='827' y='1334'>
+  		<action command='talk' name='Talk.'>
+  			<args>
+  				@bux_talk Hi, I have a question
+				@hi_talk What is it Child?
+				@bux_confused Why is it that a lot of these people aren't talking too me?
+				@hi_talk Well, firstly, Child, it's that you're a Child.
+				@hi_talk Only some High Wizards may talk too Children
+				@hi_talk Of course, that doesn't help much, as some Wizards do break the rules
+				@bux_talk Thank you! I was wondering why everybody were annoying me.
+				@bux_talk Well, I hope you have a nice day! I've got too go to a party
+				@hi_idle
+				@hi_talk Sure...
+  			</args>
+  		</action>
+  	</character>
+	
+	<character class='hiWiz' name = 'hiWiz4' x='1126' y='942' state='walkBack' facing='Back'>
+  		<action command='talk' name='Talk.'>
+  			<args>
+  				@hi_talk
+				@bux_talk What's that? I can't hear you
+				@hi_talk
+				@bux_talk Oh my god, you wizards all suck.
+  			</args>
+  		</action>
+  	</character>
+	
+	<character class='hiWiz' name = 'hiWiz5' x='300' y='763'>
+  		<action command='talk' name='Talk.'>
+  			<args>
+  				@bux_talk Hey!
+				@hi_talk Oi! U say wot m8
+				@bux_confusedtalk What?
+				@hi_talk I swear on me mum that I'll f8 u
+				@bux_confusedtalk Are you kidding me.
+				@hi_talk I'll rek u
+				@bux_talk Just... nevermind I even talked too you.
+  			</args>
+  		</action>
+  	</character>
+	
+	<character class='trWiz' x='264' y='763'>
+  		<action command='talk' name='Talk.'>
+  			<args>
+  				@tr_talk Hahaha, dude.
+				@tr_talk I know you're only a regular WIZARD, but don't you know him?
+				@bux_talk What?
+				@tr_talk Oh, damn! I didn't introduce myself did I?
+				@tr_talk Well, I'm simply a HIGH WIZARD in TRAINING.
+				@tr_talk Call me Tro.
+				@bux_talk Well, hi! I'm Bux.
+				@tr_talk Anyway, that guy you just talked too?
+				@tr_talk Used too be GRAND MASTER WIZARD, but he's kind of...
+				@tr_talk Well...
+				@tr_talk Not right in his mind. He tried to CURSE an animal, but it backfired. Now he can only threaten people in some weird accent.
+				@tr_talk Don't take it too personally.
+				@bux_talk Well, thanks for the info. But it doesn't really help me with my quest.
+				@tr_talk Oh, you must be a GRADUATE, right?
+				@bux_talk Yeah.
+				@tr_talk Well, the party is just ahead past this hallway. You should be able to see a door just up ahead.
+				@bux_talk Thank you! I hope I see you again.
+				@tr_talk I kind of don't.
+				@tr_talk Because, well...
+				@tr_talk I have this weird thing where if I see anyone a second time, they usually aren't able too see me.
+				@tr_talk But hey, maybe you'll be an exception. Just like my teacher!
+				@bux_talk Well, hopefully. I wish you the best on your training.
+  			</args>
+  		</action>
+  	</character>
+	
+	<character class='hiWiz' name = 'hiWiz7' x='767' y='944' state='walkBack' facing='Back'>
+  		<action command='talk' name='Talk.'>
+  			<args>
+  				@hi_talk Go away, please!
+				@hi_talk Can't you see I'm trying too make conversation?
+				@hi_talk Such ruffians, these graduates
+				@bux_zoneout
+  			</args>
+  		</action>
+  	</character>
+  	
+	<character class='hiWiz' name = 'hiWiz8' x='767' y='914'>
+  		<action command='talk' name='Talk.'>
+  			<args>
+  				@hi_talk Oh, don't mind him
+				@hi_talk He's just a bit angry that I proved him wrong in an argument.
+				@bux_talk Erm, OK
+  			</args>
+  		</action>
+  	</character>
+  	<!-- here we're adding a standard chest based on a template class found in
+  	etc/standardTemplates.xml -->
+  	<sprite class='chest1' name='chest1' x='346' y='1422'>
+			<action command='openChest' sprite='bux' name='Open.'>
+				<args>
+					chest1,item1, @! You got a WIZARD WAND
+					@! You hold it in your hands, and feel the cold, hard shaft of it in your hands.
+					@! Slowly, you start to bend it. You can feel the wood snap beneath your hands. A powerful aura starts to emit from the wand, but your BOX POWERS keep it back.
+					@! You got a BROKEN WAND
+					@! Fucking finally.
+				</args>
+			</action>
+		</sprite>
+   
+  	<sprite class='chest1' name='chest2' x='104' y='286'>
+			<action command='openChest' sprite='bux' name='Open.'>
+				<args>
+					chest2,item6, @! You got a FLYING SPELL
+					@! You take a look over the SCROLL and realise it's a fake.
+					@! God damn WIZARDS.
+				</args>
+			</action>
+		</sprite>
+		
+  	<sprite class='chest1' name='chest3' x='551' y='286'>
+			<action command='openChest' sprite='bux' name='Open.'>
+				<args>
+					chest3,item3, @! You got a WIZARD SLAB
+					@! The SLAB radiates energy and pulses a light blue at random intervals.
+					@! However, apart from looking cool, it doesn't serve much purpose other than a NIGHT LIGHT.
+				</args>
+			</action>
+		</sprite>
+		
+  	<sprite class='chest1' name='chest4' x='976' y='941'>
+			<action command='openChest' sprite='bux' name='Open.'>
+				<args>
+					chest4,item4, @! You got a WIZARD HAT
+					@! These WIZARDS sure like putting their items into these boxes!
+					@! Too bad they couldn't put in anything useful, god FORBID someone might want an item that someone can use.
+				</args>
+			</action>
+		</sprite>
+		
+  	<sprite class='chest1' name='chest5' x='1216' y='762'>
+			<action command='openChest' sprite='bux' name='Open.'>
+				<args>
+					chest5,item3, @! You got an OLD SLAB
+					@! It's dusty, and old. These some words on there that you can barely make out.
+					@! Ho....e....ta....un...r?
+					@! You wonder what the SLAB says before you put it into your WIZARD INVENTORY and forget about it.
+				</args>
+			</action>
+		</sprite>
+		
+  	<sprite class='chest1' name='chest6' x='794' y='762'>
+			<action command='openChest' sprite='bux' name='Open.'>
+				<args>
+					chest6,item1, @! You got a WIZARD WAND
+					@! Who the hell leaves all these wands in these chests?
+					@! It's like if someone WANTED to piss you off.
+				</args>
+			</action>
+		</sprite>
+   <!-- here we're adding in our BG and FG. This is the second half of our 
+   optimization. To avoid creating a dozen sprites for every single tile, we
+   specify that this image has been sliced up into tiles. Then we just specify
+   how many there are and how big they are, and the system will find all of them
+   and tile them correctly based on their names. This also makes it very easy
+   to transition from using one big image to a sliced up one. -->
+   
+   <!-- Note no depthing specification puts a sprite in the background. Not 
+   specifying coordinates also puts them at (0,0) by default (top-left corner). -->
+    <sprite name='thirdRoomBG'>
+    	<animation sheet='thirdRoomBG' sliced='false'/>
+    </sprite>
+	<!-- Triggers -->
+	<triggers>
+        <trigger>spriteProperty,char,x&gt;1237
+            <trigger>spriteProperty,char,y&lt;347
+				<action command='talk'>
+					 <args>
+					 @! This leads to the end of the game. Are you sure you're done here?
+					 </args>
+                        <action command='presentActions'>
+                                <args>
+                                    <action name='Yes' command='fadeOut'>
+                                        <args></args>
+                                        <action command='talk'>
+                                            <args>@! That's the end. Continue onto the next page.</args>
+										</action>
+                                    </action>
+                                    <action name='No' command='cancel'>
+                                    </action>
+                                </args>
+                        </action>
+					</action>
+            </trigger>
+        </trigger>
+	</triggers>
+  </room>
+</rooms>
+</sburb>

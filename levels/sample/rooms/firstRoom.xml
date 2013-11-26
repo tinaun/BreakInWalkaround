@@ -54,7 +54,7 @@ safe than sorry.-->
   	internal tags that may have been part of the class. Template classes
   	are a great way to seperate logic and content, as well as recycle common
   	patterns. -->
-	<character class='bux' x='760' y='320'>
+	<character class='bux' x='760' y='500'>
   		<action class='beBux'/>
   	</character>
   
@@ -63,12 +63,12 @@ safe than sorry.-->
   			<args>
   				@bux_talk Ho, may I go in?
   				@sec_talk 5 Copper Pieces
-  				@! You pay the GUARD 5 COPPER PIECES
+  				@! You give the guard a few COPPER PIECES
 				@bux_talk That should be enough, right?
-				@sec_talk You can go in now
+				@sec_talk Sure. Go on in.
 				@bux_talk Thank you
   			</args>
-			<action command='changeRoomRemote'>rooms/secondRoom.xml,secondRoom,760,300</action>
+			<action command='changeRoomRemote'>rooms/secondRoom.xml,secondRoom,1413,2070</action>
   		</action>
   	</character>
   	
